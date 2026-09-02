@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Haiti Dental Clinic"
+description = "A bilingual patient records, odontogram, treatment planning, billing, reporting, staff permissions, and attachment management app for a single-dentist dental clinic in Haiti."
+version = "1.0.0"
+id = "artifacts/dental-clinic"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23961
+
+[services.development]
+run = "pnpm --filter @workspace/dental-clinic run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/dental-clinic", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/dental-clinic/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23961"
+BASE_PATH = "/"

@@ -1,0 +1,1 @@
+- [Clerk React peer range](clerk-react-peer.md) — React 19.1.0 is pinned for Expo; Clerk's skipped patch peer warning is an intentional workspace constraint.
